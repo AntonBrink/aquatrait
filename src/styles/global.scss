@@ -1,0 +1,62 @@
+:root {
+    --background: #fafafa;
+    --headerColor: black;
+    --contentColor: rgb(33,33,33);
+    --invertedColor: black;
+    --backgroundRGB: 255, 255, 255;
+    --articleTitleBackground: rgba(155,155,155);
+  }
+  
+  [data-theme="dark"] {
+    --background: rgb(66, 66, 66);
+    --backgroundRGB: 66, 66, 66; 
+    --headerColor: white;
+    --contentColor: #fafafa;
+    --invertedColor: white;
+    --articleTitleBackground: rgba(135,135,135);
+  }
+
+*,html,body
+{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Nunito;
+    background-color: var(--background);
+    color: var(--contentColor);
+}
+
+@font-face {
+    font-family: loraMedium;
+    src: url("../fonts/Lora-Medium.ttf");
+}
+
+h1,h2,h3,h4,h5,h6
+{
+    font-family: loraMedium;
+    color: var(--headerColor)
+}
+
+@font-face {
+    font-family: Nunito;
+    src: url("../fonts/Nunito-Medium.ttf");
+}
+
+body
+{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a
+{
+    text-decoration: none;
+    color: var(--contentColor);
+}
+
+p
+{
+    color: var(--contentColor)
+}
+

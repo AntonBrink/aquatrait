@@ -1,0 +1,41 @@
+.storyRowHigh
+{
+    margin: auto auto;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-top: 10px;
+    height: 400px;
+    width: 100%;
+}
+
+.articleContainer
+{
+    width: 15%;
+    height: 100%;
+}
+
+
+.storyRowHighArticleContainer
+{
+    display: flex;
+    width: calc(100% / 8);
+    max-width: calc(100% / 8);
+}
+
+.storyRowHighArticle
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.articleTitle
+{
+    font-family: loraMedium;
+    text-align: center;
+    margin-top: 10px;
+    height: 50px;
+}
+

@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `aquatrait`,
@@ -15,5 +19,13 @@ module.exports = {
       "path": "./src/images/"
     },
     __key: "images"
-  }]
+  },
+  {
+    resolve: "gatsby-source-graphcms",
+    options: 
+    {
+      endpoint: process.env.GRAPHCMS_ENDPOINT
+    }
+  }
+]
 };

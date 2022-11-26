@@ -1,0 +1,53 @@
+.mainImageContainer
+{
+    height: 75vh;
+    width: 80%;
+    margin: auto auto;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.articleTemplateHeading
+{
+    width: 80%;
+    margin: auto auto;
+    font-size: 40px;
+    margin-top: 32px;
+}
+
+.articleTemplateIntroParagraph
+{
+    width: 80%;
+    margin: auto auto;
+    font-size: 24px;
+    text-align: justify;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+//article section
+
+.articleSection
+{
+    width: 60%;
+    font-size: 20px;
+    margin: auto auto;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+
+    p
+    {
+        text-align: justify;
+        line-height: 1.5;
+        margin-bottom: 20px;        
+    }
+}
+
+.articleSectionImageContainer
+{
+    margin-bottom: 20px;
+    height: 60vh;
+}
+
+
+//article section
