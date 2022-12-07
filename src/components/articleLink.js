@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import * as articleStyles from "../styles/articleLink.module.scss"
 import { ThemeContext } from "./store"
 
-const ArticleLink = ({articleData}) => {
+const ArticleLink = ({articleData, articleContainer}) => {
     const {articleTitle, category, urlName} = articleData
     var lowerCaseCategory;
     if(typeof category === "string")
@@ -16,7 +16,7 @@ const ArticleLink = ({articleData}) => {
     const mainImageDarkMode = getImage(articleData.mainImageDarkMode) 
     return (
           <article className={articleStyles.article} >
-            <Link to={`${lowerCaseCategory}/${urlName}`}>
+            <Link to={`${lowerCaseCategory}/${urlName}`} className={articleContainer == "categorySection" ? articleStyles.categorySectionArticle: ""}>
               <div className={articleStyles.imageContainer}>
                 <ThemeContext.Consumer>
                   {

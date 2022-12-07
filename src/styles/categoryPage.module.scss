@@ -19,6 +19,7 @@
     {
         margin-right: 0px;
         width: 32%;
+        transition-duration: 100ms;
     }
 }
 
@@ -45,3 +46,49 @@
     border-top: solid transparent 3px;
 }
 
+@media only screen and (max-width: 1023px)
+{
+    .articleHeading
+    {
+        margin-bottom: 8px;
+        font-size: 20px;
+    }
+    .articleText
+    {
+        & section
+        {
+            font-size: 14px;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 767px)
+{
+    .articleContainer
+    {
+        height: 10vh;
+        width: 95%;
+        margin-top: 20px;
+    }
+    .mainHeading
+    {
+        text-align: center;
+        font-size: 5vh;
+        margin-top: 20px;
+    }
+    .articleHeading
+    {
+        margin-bottom: 4px;
+        font-size: 14px;
+    }
+    .articleText
+    {
+        & section
+        {
+            font-size: 10px;
+            display: none;
+        }
+    }
+
+}

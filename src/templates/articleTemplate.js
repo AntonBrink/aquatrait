@@ -1,10 +1,12 @@
-import * as React from "react"
+import React, {useEffect} from "react"
 import Layout from "../components/layout"
 import {GatsbyImage} from "gatsby-plugin-image"
 import { graphql } from "gatsby"
+import {AiOutlineMail} from "@react-icons/all-files/ai/AiOutlineMail"
 import * as templateStyles from "../styles/template.module.scss"
 import { ThemeContext } from "../components/store"
 import RawText from "../components/rawText"
+import commentBox from "commentbox.io"
 export const query = graphql`
 query($slug: String!)  {
     graphCmsArticle(urlName: {eq: $slug}) {
@@ -57,6 +59,10 @@ query($slug: String!)  {
 const Article = ({data}) => {
 
   const {articleTitle, articleIntroduction, articleSections, author, category, mainImage, verticalMainImage, mainImageDarkMode} = data.graphCmsArticle;
+  useEffect(() => 
+  {
+    commentBox("5663381365194752-proj");
+  }, []);
   return (
     <Layout>
         <h1 className={templateStyles.articleTemplateHeading}>{articleTitle}</h1>
@@ -82,6 +88,17 @@ const Article = ({data}) => {
               <RawText text={section.sectionContent}></RawText></section>)
           })
         }
+        {/* <section className={templateStyles.emailReminder}>
+          <div className={templateStyles.emailContainer}>
+            <AiOutlineMail></AiOutlineMail><strong>Join Our Newsletter</strong>
+          </div>
+          <div className={templateStyles.emailText}>
+            <p>Be the first to know when a new article is released!</p>
+          </div>
+        </section> */}
+        <section className={templateStyles.commentSection}>
+          <div className="commentbox"/>
+        </section>
     </Layout>
   )
 }

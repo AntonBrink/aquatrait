@@ -10,7 +10,7 @@ const CategorySection = ({categoryData, category}) => {
     {
       return(
         <div key={index} className={categorySectionStyles.categorySectionArticle}>
-        <ArticleLink articleData={articleLink.node}></ArticleLink>
+        <ArticleLink articleData={articleLink.node} articleContainer={"categorySection"}></ArticleLink>
         </div>
       )
     })}

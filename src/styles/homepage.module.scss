@@ -108,3 +108,36 @@
     height: 100px;
     width: 100px;
 }
+
+@media only screen and (max-width: 767px) 
+{
+    .mainArticle
+    {
+        flex-direction: column;  
+    }
+    .mainArticleImage
+    {
+        width: 100%;
+        height:85%;
+        border-right: none;
+    }
+    .mainArticleInfo
+    {
+        width: 100%;
+        height: fit-content;
+        padding: 10px 15px 0px 10px;
+        margin: 0px;
+    }
+    .mainArticleHeading
+    {
+        text-align: right;
+    }
+    .mainArticleIntroduction
+    {
+        display: none;
+    }
+    .authorData
+    {
+        display: none;
+    }
+}

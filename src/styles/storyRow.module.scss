@@ -39,3 +39,24 @@
     height: 50px;
 }
 
+@media only screen and (max-width: 767px)
+{
+
+.storyRowHigh
+{
+    height: 300px;
+}
+
+.articleContainer:nth-child(3)
+{
+    display: none;
+}
+.articleContainer:nth-child(4)
+{
+    display: none;
+}
+.articleContainer
+{
+    width: 40%;
+}
+}

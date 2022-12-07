@@ -185,3 +185,44 @@
     // nav
 
 }
+
+@media only screen and (max-width: 767px) 
+{
+ 
+.header
+{
+    display: flex;
+    align-items: center;
+    padding-top: 0px;
+}
+
+.logo
+{
+    left: 5px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width:40%;
+    min-width: 180px;
+}
+.logoImage
+{
+    height: 100%;
+    width: 100%;
+}
+
+.navButton
+    {
+        display: unset;
+        right: 5px;
+        background-color: var(--background);
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        z-index: 3;
+    }
+
+}

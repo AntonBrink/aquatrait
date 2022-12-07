@@ -30,3 +30,26 @@
     display: flex;
     justify-content: space-around;
 }
+
+@media only screen and (max-width: 767px)
+{
+    .articleContainer
+    {
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        margin: auto auto;
+    }   
+
+    .categorySectionArticle
+    {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 40px;
+        border-radius: 25px;
+    }
+    .categorySectionArticle:last-child()
+    {
+        margin-bottom: 10px;
+    }
+}

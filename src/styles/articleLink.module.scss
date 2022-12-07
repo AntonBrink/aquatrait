@@ -30,3 +30,46 @@
 {
     box-shadow: 3px 3px black;
 }
+
+
+@media only screen and (max-width: 767px)
+{
+
+    .article
+    {
+        border: none;
+    }
+    .categorySectionArticle
+    {
+        display: flex;
+        flex-direction: row;
+        max-height: 100%;
+        height: 100px;
+        border:none;
+        border-radius: 25px;
+    }
+
+
+    .categorySectionArticle .imageContainer
+    {
+        width: 40%;
+        height: 100%;
+        border:none;
+    }
+
+    .categorySectionArticle .articleTitle
+    {
+        width: 60%;
+        height: 100%;
+        text-align: left;
+        display: block;
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-right: 5px;
+        line-height: 25px;
+        border:none;
+        border-left: solid var(--invertedColor) 2px;
+        font-size: 14px;
+    }
+}
+
