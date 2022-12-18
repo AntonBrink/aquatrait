@@ -28,18 +28,16 @@ fragment Article on Article {
         }
       }
       sectionImage {
-        ... on Asset {
+        ... on Image {
           remoteTypeName: __typename
           remoteId: id
-          locale
           stage
         }
       }
       sectionImageDarkMode {
-        ... on Asset {
+        ... on Image {
           remoteTypeName: __typename
           remoteId: id
-          locale
           stage
         }
       }
@@ -66,22 +64,6 @@ fragment Article on Article {
       stage
     }
   }
-  mainImage {
-    ... on Asset {
-      remoteTypeName: __typename
-      remoteId: id
-      locale
-      stage
-    }
-  }
-  verticalMainImage {
-    ... on Asset {
-      remoteTypeName: __typename
-      remoteId: id
-      locale
-      stage
-    }
-  }
   author {
     ... on Author {
       remoteTypeName: __typename
@@ -90,18 +72,30 @@ fragment Article on Article {
     }
   }
   mainImageDarkMode {
-    ... on Asset {
+    ... on Image {
       remoteTypeName: __typename
       remoteId: id
-      locale
+      stage
+    }
+  }
+  mainImage {
+    ... on Image {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  verticalMainImage {
+    ... on Image {
+      remoteTypeName: __typename
+      remoteId: id
       stage
     }
   }
   verticalImageDarkMode {
-    ... on Asset {
+    ... on Image {
       remoteTypeName: __typename
       remoteId: id
-      locale
       stage
     }
   }

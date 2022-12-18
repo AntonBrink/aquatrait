@@ -1,16 +1,10 @@
-fragment Asset on Asset {
+fragment Image on Image {
   stage
-  locale
-  mimeType
-  size
-  width
-  height
-  fileName
-  handle
-  publishedAt(variation: COMBINED)
-  updatedAt(variation: COMBINED)
-  createdAt(variation: COMBINED)
+  publishedAt
+  updatedAt
+  createdAt
   remoteId: id
+  artistName
   publishedBy {
     ... on User {
       remoteTypeName: __typename
@@ -32,20 +26,15 @@ fragment Asset on Asset {
       stage
     }
   }
-  authorImageAuthor {
-    ... on Author {
+  image {
+    ... on Asset {
       remoteTypeName: __typename
       remoteId: id
+      locale
       stage
     }
   }
-  imageImage {
-    ... on Image {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
+  imageType
   scheduledIn {
     ... on ScheduledOperation {
       remoteTypeName: __typename
@@ -53,5 +42,4 @@ fragment Asset on Asset {
       stage
     }
   }
-  url
 }

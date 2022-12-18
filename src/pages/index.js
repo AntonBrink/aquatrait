@@ -6,6 +6,7 @@ import { graphql, Link } from "gatsby"
 import StoryRowHigh from "../components/storyRowHigh"
 import CategorySection from "../components/categorySection"
 import { ThemeContext } from "../components/store"
+import Head from "../components/head"
 
 export const query = graphql`
 query MyQuery {
@@ -16,13 +17,22 @@ query MyQuery {
         urlName
         category
         mainImageDarkMode{
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         verticalImageDarkMode{
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         verticalMainImage {
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         author {
           name
@@ -38,7 +48,10 @@ query MyQuery {
           raw
         }
         mainImage {
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
       }
     }
@@ -50,16 +63,28 @@ query MyQuery {
         articleTitle
         urlName
         mainImageDarkMode{
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         verticalImageDarkMode{
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         verticalMainImage {
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         mainImage {
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
       }
     }
@@ -71,16 +96,28 @@ query MyQuery {
       articleTitle
       urlName
       mainImageDarkMode{
-        gatsbyImageData
+        image
+          {
+            gatsbyImageData
+          }
       }
       verticalImageDarkMode{
-        gatsbyImageData
+        image
+          {
+            gatsbyImageData
+          }
       }
       verticalMainImage {
-        gatsbyImageData
+        image
+          {
+            gatsbyImageData
+          }
       }
       mainImage {
-        gatsbyImageData
+        image
+          {
+            gatsbyImageData
+          }
       }
     }
   }
@@ -92,16 +129,28 @@ query MyQuery {
         articleTitle
         urlName
         mainImageDarkMode{
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         verticalImageDarkMode{
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         verticalMainImage {
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         mainImage {
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
       }
     }
@@ -113,16 +162,28 @@ query MyQuery {
         articleTitle
         urlName
         mainImageDarkMode{
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         verticalImageDarkMode{
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         verticalMainImage {
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         mainImage {
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
       }
     }
@@ -134,16 +195,28 @@ query MyQuery {
         articleTitle
         urlName
         mainImageDarkMode{
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         verticalImageDarkMode{
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         verticalMainImage {
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
         mainImage {
-          gatsbyImageData
+          image
+          {
+            gatsbyImageData
+          }
         }
       }
     }
@@ -155,6 +228,7 @@ query MyQuery {
 const IndexPage = ({data}) => {
   return (
       <Layout>
+      <Head author="Anton Brink" title={"Aquatrait | Homepage"} metaDescription={"We strive to offer the best aquatics content with the best user experience"}></Head>
       <Link to={`${data.allGraphCmsArticle.edges[0].node.category.toLowerCase()}/${data.allGraphCmsArticle.edges[0].node.urlName}`}>
       <div className={homepageStyles.mainArticle}>
         <div className={homepageStyles.hoverInfo}><h2>View Article</h2></div>
@@ -163,7 +237,7 @@ const IndexPage = ({data}) => {
           (
             <div className={homepageStyles.mainArticleImage}>
           {
-            context.theme == "light"?<GatsbyImage objectFit="cover" style={{height: "100%", width: "100%"}} imgStyle={{height: "100%", width: "100%"}} image={data.allGraphCmsArticle.edges[0].node.verticalMainImage.gatsbyImageData} alt={`${data.allGraphCmsArticle.edges[0].node.articleTitle }'s Picture`} /> : <GatsbyImage objectFit="cover" style={{height: "100%", width: "100%"}} imgStyle={{height: "100%", width: "100%"}} image={data.allGraphCmsArticle.edges[0].node.verticalImageDarkMode.gatsbyImageData} alt={`${data.allGraphCmsArticle.edges[0].node.articleTitle }'s Picture`} />
+            context.theme == "light"?<GatsbyImage objectFit="cover" style={{height: "100%", width: "100%"}} imgStyle={{height: "100%", width: "100%"}} image={data.allGraphCmsArticle.edges[0].node.verticalMainImage.image.gatsbyImageData} alt={`${data.allGraphCmsArticle.edges[0].node.articleTitle }'s Picture`} /> : <GatsbyImage objectFit="cover" style={{height: "100%", width: "100%"}} imgStyle={{height: "100%", width: "100%"}} image={data.allGraphCmsArticle.edges[0].node.verticalImageDarkMode.image.gatsbyImageData} alt={`${data.allGraphCmsArticle.edges[0].node.articleTitle }'s Picture`} />
           }
         </div>
           )}

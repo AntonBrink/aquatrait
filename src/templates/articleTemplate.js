@@ -7,6 +7,7 @@ import * as templateStyles from "../styles/template.module.scss"
 import { ThemeContext } from "../components/store"
 import RawText from "../components/rawText"
 import commentBox from "commentbox.io"
+import Head from "../components/head"
 export const query = graphql`
 query($slug: String!)  {
     graphCmsArticle(urlName: {eq: $slug}) {
@@ -18,18 +19,34 @@ query($slug: String!)  {
           }
           sectionSubheading
           sectionImage {
-            gatsbyImageData
+            artistName
+            image
+            {
+              gatsbyImageData
+            }
           }
           sectionImageDarkMode {
-            gatsbyImageData
+            artistName
+            image
+            {
+              gatsbyImageData
+            }
           }
         }
       }
       mainImageDarkMode{
-        gatsbyImageData
+        artistName
+        image
+        {
+          gatsbyImageData
+        }
       }
       verticalImageDarkMode{
-        gatsbyImageData
+        artistName
+        image
+        {
+          gatsbyImageData
+        }
       }
       articleTitle
       author {
@@ -43,10 +60,18 @@ query($slug: String!)  {
       }
       category
       mainImage {
-        gatsbyImageData
+        artistName
+        image
+        {
+          gatsbyImageData
+        }
       }
       verticalMainImage {
-        gatsbyImageData
+        artistName
+        image
+        {
+          gatsbyImageData
+        }
       }
       articleIntroduction {
         raw
@@ -65,9 +90,15 @@ const Article = ({data}) => {
   }, []);
   return (
     <Layout>
+        <Head author={author} title={articleTitle} metaDescription={articleIntroduction}></Head>
         <h1 className={templateStyles.articleTemplateHeading}>{articleTitle}</h1>
         <ThemeContext.Consumer>
-          {context => (<div className={templateStyles.mainImageContainer}><GatsbyImage image={context.theme == "light"?  mainImage.gatsbyImageData : mainImageDarkMode.gatsbyImageData} imgStyle={{width: "100%", height: "100%", objectFit:"cover"}} style={{width: "100%", height: "100%", objectFit:"cover"}} alt={articleTitle}></GatsbyImage></div>)}
+          {context => (
+            <div className={templateStyles.mainImageContainer}>
+              <GatsbyImage image={context.theme == "light"?  mainImage.image.gatsbyImageData : mainImageDarkMode.image.gatsbyImageData} imgStyle={{width: "100%", height: "100%", objectFit:"cover"}} style={{width: "100%", height: "100%", objectFit:"cover"}} alt={articleTitle}></GatsbyImage>
+              <h2>Image By: {mainImage.artistName}</h2>
+            </div>
+            )}
         </ThemeContext.Consumer>
         {articleIntroduction.raw.children.map(function(paragraph, index)
         {
@@ -82,7 +113,7 @@ const Article = ({data}) => {
               <h2>{section.sectionSubheading}</h2>
               {
                 (section.sectionImage || section.sectionImageDarkMode) && <ThemeContext.Consumer>
-                {context => (<div className={templateStyles.articleSectionImageContainer}><GatsbyImage image={context.theme == "light" && section.sectionImage?  section.sectionImage.gatsbyImageData : section.sectionImageDarkMode ? section.sectionImageDarkMode.gatsbyImageData : section.sectionImage.gatsbyImageData} imgStyle={{width: "100%", height: "100%", objectFit:"cover"}} style={{width: "100%", height: "100%", objectFit:"cover"}} alt={section.sectionSubheading}></GatsbyImage></div>)}
+                {context => (<div className={templateStyles.articleSectionImageContainer}><GatsbyImage image={context.theme == "light" && section.sectionImage?  section.sectionImage.image.gatsbyImageData : section.sectionImageDarkMode ? section.sectionImageDarkMode.image.gatsbyImageData : section.sectionImage.image.gatsbyImageData} imgStyle={{width: "100%", height: "100%", objectFit:"cover"}} style={{width: "100%", height: "100%", objectFit:"cover"}} alt={section.sectionSubheading}></GatsbyImage></div>)}
               </ThemeContext.Consumer>
               }
               <RawText text={section.sectionContent}></RawText></section>)

@@ -11,9 +11,10 @@ const ArticleLink = ({articleData, articleContainer}) => {
     {
       lowerCaseCategory = category.toLowerCase()
     }
-    const verticalMainImage = getImage(articleData.mainImage)
-    const mainImage = getImage(articleData.verticalMainImage) 
-    const mainImageDarkMode = getImage(articleData.mainImageDarkMode) 
+    console.log(articleData)
+    const verticalMainImage = getImage(articleData.mainImage.image)
+    const mainImage = getImage(articleData.verticalMainImage.image) 
+    const mainImageDarkMode = getImage(articleData.mainImageDarkMode.image) 
     return (
           <article className={articleStyles.article} >
             <Link to={`${lowerCaseCategory}/${urlName}`} className={articleContainer == "categorySection" ? articleStyles.categorySectionArticle: ""}>

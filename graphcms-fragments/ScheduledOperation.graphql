@@ -53,5 +53,10 @@ fragment ScheduledOperation on ScheduledOperation {
       remoteId: id
       stage
     }
+    ... on Image {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
   }
 }

@@ -5,6 +5,7 @@ import { graphql, Link } from "gatsby"
 import * as categoryPageStyles from "../styles/categoryPage.module.scss"
 import RawText from "../components/rawText"
 import { ThemeContext } from "../components/store"
+import Head from "../components/head"
 
 export const query = graphql`
 query($category: GraphCMS_Category!)  {
@@ -16,10 +17,16 @@ query($category: GraphCMS_Category!)  {
               raw
             }
             mainImageDarkMode{
-              gatsbyImageData
+              image
+          {
+            gatsbyImageData
+          }
             }
             verticalImageDarkMode{
-              gatsbyImageData
+              image
+          {
+            gatsbyImageData
+          }
             }
             articleTitle
             urlName
@@ -33,10 +40,16 @@ query($category: GraphCMS_Category!)  {
               name
             }
             mainImage {
-              gatsbyImageData
+              image
+          {
+            gatsbyImageData
+          }
             }
             verticalMainImage {
-              gatsbyImageData
+              image
+          {
+            gatsbyImageData
+          }
             }
           }
         }
@@ -47,16 +60,16 @@ query($category: GraphCMS_Category!)  {
 const Category = ({data}) => {
   return (
     <Layout>
+        <Head author={"Anton Brink"} title={data.allGraphCmsArticle.edges[0].node.category} metaDescription={`A collection of ${data.allGraphCmsArticle.edges[0].node.category} articles`}></Head>
         <h1 className={categoryPageStyles.mainHeading}>{data.allGraphCmsArticle.edges[0].node.category}</h1>
         {data.allGraphCmsArticle.edges.map(function(article, index)
         {
-          console.log(data.allGraphCmsArticle.edges[0].node.category)
             const {articleTitle, author, articleIntroduction, mainImage, verticalMainIMage, urlName, mainImageDarkMode} = article.node;
             return(
               <Link to={`/${(data.allGraphCmsArticle.edges[0].node.category).toLowerCase()}/${urlName}`}>
                 <article className={categoryPageStyles.articleContainer}>
                   <ThemeContext.Consumer>
-                    {context => (<div className={categoryPageStyles.articleImageContainer}><GatsbyImage style={{width: "100%", height: "100%"}} imgStyle={{width: "100%", height: "100%"}} image={context.theme == "light"?mainImage.gatsbyImageData : mainImageDarkMode.gatsbyImageData}></GatsbyImage></div>)}
+                    {context => (<div className={categoryPageStyles.articleImageContainer}><GatsbyImage style={{width: "100%", height: "100%"}} imgStyle={{width: "100%", height: "100%"}} image={context.theme == "light"?mainImage.image.gatsbyImageData : mainImageDarkMode.image.gatsbyImageData}></GatsbyImage></div>)}
                   </ThemeContext.Consumer>
                   <div className={categoryPageStyles.articleText}>
                   <h2 className={categoryPageStyles.articleHeading} key={`${articleTitle}-${index}`}>{articleTitle}</h2>
