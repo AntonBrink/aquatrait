@@ -9,227 +9,216 @@ import { ThemeContext } from "../components/store"
 import Head from "../components/head"
 
 export const query = graphql`
-query MyQuery {
-  allGraphCmsArticle(sort: {fields: publishedAt, order: DESC}, limit: 5) {
-    edges {
-      node {
+query{
+    cms 
+    {
+      articles(orderBy: publishedAt_DESC, first:3)
+      {
         articleTitle
         urlName
         category
-        mainImageDarkMode{
+        mainImageDarkMode
+        {
           image
           {
-            gatsbyImageData
+            url
           }
         }
-        verticalImageDarkMode{
+        verticalImageDarkMode
+        {
           image
           {
-            gatsbyImageData
+            url
           }
         }
-        verticalMainImage {
+        verticalMainImage 
+        {
           image
           {
-            gatsbyImageData
+            url
           }
         }
-        author {
+        author 
+        {
           name
-          description {
+          description 
+          {
             text
           }
-          authorImage {
-            gatsbyImageData
+          authorImage 
+          {
+            url
           }
         }
-        articleIntroduction {
+        articleIntroduction 
+        {
           text
           raw
         }
-        mainImage {
+        mainImage 
+        {
           image
           {
-            gatsbyImageData
+            url
           }
         }
       }
-    }
-  }
-  Planted: allGraphCmsArticle(filter: {category: {eq: Planted}}, limit: 3) {
-    edges {
-      node {
-        category
-        articleTitle
-        urlName
-        mainImageDarkMode{
-          image
-          {
-            gatsbyImageData
-          }
-        }
-        verticalImageDarkMode{
-          image
-          {
-            gatsbyImageData
-          }
-        }
-        verticalMainImage {
-          image
-          {
-            gatsbyImageData
-          }
-        }
-        mainImage {
-          image
-          {
-            gatsbyImageData
-          }
-        }
-      }
-    }
-  }
-  Freshwater: allGraphCmsArticle(filter: {category: {eq: Freshwater}}, limit: 3) {
-  edges {
-    node {
-      category
-      articleTitle
-      urlName
-      mainImageDarkMode{
-        image
-          {
-            gatsbyImageData
-          }
-      }
-      verticalImageDarkMode{
-        image
-          {
-            gatsbyImageData
-          }
-      }
-      verticalMainImage {
-        image
-          {
-            gatsbyImageData
-          }
-      }
-      mainImage {
-        image
-          {
-            gatsbyImageData
-          }
-      }
-    }
-  }
-}
-  Marine: allGraphCmsArticle(filter: {category: {eq: Marine}}, limit: 3) {
-    edges {
-      node {
-        category
-        articleTitle
-        urlName
-        mainImageDarkMode{
-          image
-          {
-            gatsbyImageData
-          }
-        }
-        verticalImageDarkMode{
-          image
-          {
-            gatsbyImageData
-          }
-        }
-        verticalMainImage {
-          image
-          {
-            gatsbyImageData
-          }
-        }
-        mainImage {
-          image
-          {
-            gatsbyImageData
-          }
-        }
-      }
-    }
-  }
-  General: allGraphCmsArticle(filter: {category: {eq: General}}, limit: 3) {
-    edges {
-      node {
-        category
-        articleTitle
-        urlName
-        mainImageDarkMode{
-          image
-          {
-            gatsbyImageData
-          }
-        }
-        verticalImageDarkMode{
-          image
-          {
-            gatsbyImageData
-          }
-        }
-        verticalMainImage {
-          image
-          {
-            gatsbyImageData
-          }
-        }
-        mainImage {
-          image
-          {
-            gatsbyImageData
-          }
-        }
-      }
-    }
-  }
-  Other: allGraphCmsArticle(filter: {category: {eq: Other}}, limit: 3) {
-    edges {
-      node {
-        category
-        articleTitle
-        urlName
-        mainImageDarkMode{
-          image
-          {
-            gatsbyImageData
-          }
-        }
-        verticalImageDarkMode{
-          image
-          {
-            gatsbyImageData
-          }
-        }
-        verticalMainImage {
-          image
-          {
-            gatsbyImageData
-          }
-        }
-        mainImage {
-          image
-          {
-            gatsbyImageData
-          }
-        }
-      }
-    }
-  }
-}
 
+      Planted: articles(where: {category: Planted}, first: 3) {
+        category
+        articleTitle
+        urlName
+        mainImageDarkMode{
+          image
+          {
+            url
+          }
+        }
+        verticalImageDarkMode{
+          image
+          {
+            url
+          }
+        }
+        verticalMainImage {
+          image
+          {
+            url
+          }
+        }
+        mainImage {
+          image
+          {
+            url
+          }
+        }
+      }
+      Freshwater: articles(where: {category: Freshwater}, first: 3) {
+        category
+        articleTitle
+        urlName
+        mainImageDarkMode{
+          image
+            {
+              url
+            }
+        }
+        verticalImageDarkMode{
+          image
+            {
+              url
+            }
+        }
+        verticalMainImage {
+          image
+            {
+              url
+            }
+        }
+        mainImage {
+          image
+            {
+              url
+            }
+        }
+    }
+      Marine: articles(where: {category: Marine}, first: 3) {
+            category
+            articleTitle
+            urlName
+            mainImageDarkMode{
+              image
+              {
+                url
+              }
+            }
+            verticalImageDarkMode{
+              image
+              {
+                url
+              }
+            }
+            verticalMainImage {
+              image
+              {
+                url
+              }
+            }
+            mainImage {
+              image
+              {
+                url
+              }
+            }
+      }
+      General: articles(where: {category: General}, first: 3) {
+            category
+            articleTitle
+            urlName
+            mainImageDarkMode{
+              image
+              {
+                url
+              }
+            }
+            verticalImageDarkMode{
+              image
+              {
+                url
+              }
+            }
+            verticalMainImage {
+              image
+              {
+                url
+              }
+            }
+            mainImage {
+              image
+              {
+                url
+              }
+            }
+      }
+      Other: articles(where: {category: Other}, first: 3) {
+            category
+            articleTitle
+            urlName
+            mainImageDarkMode{
+              image
+              {
+                url
+              }
+            }
+            verticalImageDarkMode{
+              image
+              {
+                url
+              }
+            }
+            verticalMainImage {
+              image
+              {
+                url
+              }
+            }
+            mainImage {
+              image
+              {
+                url
+              }
+            }
+          }
+    }
+  }
 `
 
 const IndexPage = ({data}) => {
+  console.log("data: ", JSON.stringify(data,null,4))
   return (
       <Layout>
       <Head author="Anton Brink" title={"Aquatrait | Homepage"} metaDescription={"We strive to offer the best aquatics content with the best user experience"}></Head>
-      <Link to={`${data.allGraphCmsArticle.edges[0].node.category.toLowerCase()}/${data.allGraphCmsArticle.edges[0].node.urlName}`}>
+      <Link to={`${data.cms.articles.category.toLowerCase()}/${data.cms.articles.urlName}`}>
       <div className={homepageStyles.mainArticle}>
         <div className={homepageStyles.hoverInfo}><h2>View Article</h2></div>
         <ThemeContext.Consumer>
@@ -237,30 +226,30 @@ const IndexPage = ({data}) => {
           (
             <div className={homepageStyles.mainArticleImage}>
           {
-            context.theme == "light"?<GatsbyImage objectFit="cover" style={{height: "100%", width: "100%"}} imgStyle={{height: "100%", width: "100%"}} image={data.allGraphCmsArticle.edges[0].node.verticalMainImage.image.gatsbyImageData} alt={`${data.allGraphCmsArticle.edges[0].node.articleTitle }'s Picture`} /> : <GatsbyImage objectFit="cover" style={{height: "100%", width: "100%"}} imgStyle={{height: "100%", width: "100%"}} image={data.allGraphCmsArticle.edges[0].node.verticalImageDarkMode.image.gatsbyImageData} alt={`${data.allGraphCmsArticle.edges[0].node.articleTitle }'s Picture`} />
+            context.theme == "light"?<GatsbyImage objectFit="cover" style={{height: "100%", width: "100%"}} imgStyle={{height: "100%", width: "100%"}} image={data.cms.articles.verticalMainImage.image.url} alt={`${data.cms.articles.articleTitle }'s Picture`} /> : <GatsbyImage objectFit="cover" style={{height: "100%", width: "100%"}} imgStyle={{height: "100%", width: "100%"}} image={data.cms.articles.verticalImageDarkMode.image.url} alt={`${data.cms.articles.articleTitle }'s Picture`} />
           }
         </div>
           )}
         </ThemeContext.Consumer>
         <aside className={homepageStyles.mainArticleInfo}>
           <h1 className={homepageStyles.mainArticleHeading}>
-            {data.allGraphCmsArticle.edges[0].node.articleTitle}
+            {data.cms.articles.articleTitle}
           </h1>
-            {data.allGraphCmsArticle.edges[0].node.articleIntroduction.raw.children.map((paragraph, index) => {
+            {data.cms.articles.articleIntroduction.raw.children.map((paragraph, index) => {
               return(<p key={index} className={homepageStyles.mainArticleIntroduction}>
                 {paragraph.children[0].text}
               </p>)
             })}
           <div className={homepageStyles.authorData}>
             <div className={homepageStyles.authorImageContainer}>
-            <GatsbyImage objectFit="cover" style={{height: "100%", maxHeight: "100px", maxWidth: "100px", width: "100%"}} imgStyle={{height: "100%", width: "100%",maxHeight: "100px", maxWidth: "100px", borderRadius: "100%"}} image={data.allGraphCmsArticle.edges[0].node.author.authorImage.gatsbyImageData} alt={`${data.allGraphCmsArticle.edges[0].node.author.name}'s Picture`} />
+            <GatsbyImage objectFit="cover" style={{height: "100%", maxHeight: "100px", maxWidth: "100px", width: "100%"}} imgStyle={{height: "100%", width: "100%",maxHeight: "100px", maxWidth: "100px", borderRadius: "100%"}} image={data.cms.articles.author.authorImage.url} alt={`${data.cms.articles.author.name}'s Picture`} />
             </div>
             <div className={homepageStyles.authorDetails}>
                 <h2 className={homepageStyles.authorName}>
-                  {data.allGraphCmsArticle.edges[0].node.author.name}
+                  {data.cms.articles.author.name}
                 </h2>
                 <p>
-                  {data.allGraphCmsArticle.edges[0].node.author.description.text}
+                  {data.cms.articles.author.description.text}
                 </p>  
             </div>
           
@@ -268,7 +257,7 @@ const IndexPage = ({data}) => {
         </aside>
       </div>
       </Link>
-      <StoryRowHigh articleData={data.allGraphCmsArticle.edges}></StoryRowHigh>
+      <StoryRowHigh articleData={data.cms.articles}></StoryRowHigh>
       <CategorySection categoryData={data.General} category={"General"}></CategorySection>
       <CategorySection categoryData={data.Planted} category={"Planted"}></CategorySection>
       <CategorySection categoryData={data.Freshwater} category={"Freshwater"}></CategorySection>

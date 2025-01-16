@@ -1,20 +1,18 @@
-exports.createPages = async function ({ actions, graphql }) {
+exports.createPages = async ({ actions, graphql }) => {
     const { data } = await graphql(`
-    query PageQuery {
-        allGraphCmsArticle {
-          edges {
-            node {
-              urlName
-              category
-            }
-          }
+    query {
+      cms {
+        articles {
+          urlName
+          category
         }
       }
-      
+    }
     `)
-    data.allGraphCmsArticle.edges.forEach(edge => {
-      const slug = edge.node.urlName
-      const category = edge.node.category
+    console.log("data: ", JSON.stringify(data,null,4))
+    data.cms.articles.forEach(article => {
+      const slug = article.urlName
+      const category = article.category
       actions.createPage({
         path: `${category.toLowerCase()}/${slug}`,
         component: require.resolve(`./src/templates/articleTemplate.js`),
@@ -22,8 +20,8 @@ exports.createPages = async function ({ actions, graphql }) {
       })
     })
     var categories = [];
-    data.allGraphCmsArticle.edges.forEach(edge => {
-      categories.push(edge.node.category)
+    data.cms.articles.forEach(article => {
+      categories.push(article.category)
     })
     categories = [...new Set(categories)]
     categories.forEach(function(category){

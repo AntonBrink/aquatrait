@@ -21,10 +21,12 @@ module.exports = {
     __key: "images"
   },
   {
-    resolve: "gatsby-source-graphcms",
+    resolve: "gatsby-source-graphql",
     options: 
     {
-      endpoint: process.env.GRAPHCMS_ENDPOINT
+      typeName: "GRAPHCMS",
+      fieldName: "cms",
+      url: process.env.HYGRAPH_ENDPOINT
     }
   }
 ]

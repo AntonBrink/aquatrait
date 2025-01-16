@@ -9,81 +9,82 @@ import RawText from "../components/rawText"
 import commentBox from "commentbox.io"
 import Head from "../components/head"
 export const query = graphql`
-query($slug: String!)  {
-    graphCmsArticle(urlName: {eq: $slug}) {
-      articleSections {
-        ... on GraphCMS_ArticleSection {
-          sectionContent
+query($slug: String!) {
+    cms {
+      article(where:{urlName: $slug}) {
+        articleSections {
+          ... on ArticleSection {
+            sectionContent
+            {
+              raw
+            }
+            sectionSubheading
+            sectionImage {
+              artistName
+              image
+              {
+                url
+              }
+            }
+            sectionImageDarkMode {
+              artistName
+              image
+              {
+                url
+              }
+            }
+          }
+        }
+        mainImageDarkMode{
+          artistName
+          image
           {
+            url
+          }
+        }
+        verticalImageDarkMode{
+          artistName
+          image
+          {
+            url
+          }
+        }
+        articleTitle
+        author {
+          authorImage {
+            url
+          }
+          name
+          description {
             raw
           }
-          sectionSubheading
-          sectionImage {
-            artistName
-            image
-            {
-              gatsbyImageData
-            }
-          }
-          sectionImageDarkMode {
-            artistName
-            image
-            {
-              gatsbyImageData
-            }
+        }
+        category
+        mainImage {
+          artistName
+          image
+          {
+            url
           }
         }
-      }
-      mainImageDarkMode{
-        artistName
-        image
-        {
-          gatsbyImageData
+        verticalMainImage {
+          artistName
+          image
+          {
+            url
+          }
         }
-      }
-      verticalImageDarkMode{
-        artistName
-        image
-        {
-          gatsbyImageData
-        }
-      }
-      articleTitle
-      author {
-        authorImage {
-          gatsbyImageData
-        }
-        name
-        description {
+        articleIntroduction {
           raw
         }
       }
-      category
-      mainImage {
-        artistName
-        image
-        {
-          gatsbyImageData
-        }
-      }
-      verticalMainImage {
-        artistName
-        image
-        {
-          gatsbyImageData
-        }
-      }
-      articleIntroduction {
-        raw
-      }
-    }
+    }  
   }
-     
 `
 
 const Article = ({data}) => {
 
-  const {articleTitle, articleIntroduction, articleSections, author, category, mainImage, verticalMainImage, mainImageDarkMode} = data.graphCmsArticle;
+  const {articleTitle, articleIntroduction, articleSections, author, category, mainImage, verticalMainImage, mainImageDarkMode} = data.article;
   useEffect(() => 
   {
     commentBox("5663381365194752-proj");
@@ -95,7 +96,7 @@ const Article = ({data}) => {
         <ThemeContext.Consumer>
           {context => (
             <div className={templateStyles.mainImageContainer}>
-              <GatsbyImage image={context.theme == "light"?  mainImage.image.gatsbyImageData : mainImageDarkMode.image.gatsbyImageData} imgStyle={{width: "100%", height: "100%", objectFit:"cover"}} style={{width: "100%", height: "100%", objectFit:"cover"}} alt={articleTitle}></GatsbyImage>
+              <GatsbyImage image={context.theme == "light"?  mainImage.image.url : mainImageDarkMode.image.url} imgStyle={{width: "100%", height: "100%", objectFit:"cover"}} style={{width: "100%", height: "100%", objectFit:"cover"}} alt={articleTitle}></GatsbyImage>
               <h2>Image By: {mainImage.artistName}</h2>
             </div>
             )}
@@ -113,7 +114,7 @@ const Article = ({data}) => {
               <h2>{section.sectionSubheading}</h2>
               {
                 (section.sectionImage || section.sectionImageDarkMode) && <ThemeContext.Consumer>
-                {context => (<div className={templateStyles.articleSectionImageContainer}><GatsbyImage image={context.theme == "light" && section.sectionImage?  section.sectionImage.image.gatsbyImageData : section.sectionImageDarkMode ? section.sectionImageDarkMode.image.gatsbyImageData : section.sectionImage.image.gatsbyImageData} imgStyle={{width: "100%", height: "100%", objectFit:"cover"}} style={{width: "100%", height: "100%", objectFit:"cover"}} alt={section.sectionSubheading}></GatsbyImage></div>)}
+                {context => (<div className={templateStyles.articleSectionImageContainer}><GatsbyImage image={context.theme == "light" && section.sectionImage?  section.sectionImage.image.url : section.sectionImageDarkMode ? section.sectionImageDarkMode.image.url : section.sectionImage.image.url} imgStyle={{width: "100%", height: "100%", objectFit:"cover"}} style={{width: "100%", height: "100%", objectFit:"cover"}} alt={section.sectionSubheading}></GatsbyImage></div>)}
               </ThemeContext.Consumer>
               }
               <RawText text={section.sectionContent}></RawText></section>)
